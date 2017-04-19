@@ -2,20 +2,23 @@
 
 class Admin extends CI_Controller {
 
+	function __construct(){
+		parent::__construct();
+		// $this->load->helper(array('url','form'));
+		// $this->load->model('model_admin');
+	}
+
 	function index(){
+		if($this->session->userdata('admin_valid') != TRUE ){
+			redirect("login");
+		}
+
 		$a['jenis']	= $this->model_admin->tampil_jenis()->num_rows(); //untuk ambil data dari file model_admin.php dengan function tampil_jenis
 		$a['surat_keluar']	= $this->model_admin->tampil_surat_keluar()->num_rows();
 		$a['page']	= "home";
 		
 		$this->load->view('admin/index', $a);
-	}
-	
-	function __construct(){
-		parent::__construct();
-		$this->load->helper(array('url','form'));
-		$this->load->model('model_admin');
-	}
-
+	}	
 
 	/* Fungsi Jenis Surat */
 	function jenis_surat(){

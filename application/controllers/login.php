@@ -5,6 +5,10 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
+		if($this->session->userdata('admin_valid') == TRUE ){
+			redirect("admin");
+		}
+		
 		$this->load->view('login');
 	}
 
