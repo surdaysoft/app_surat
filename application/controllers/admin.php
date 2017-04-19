@@ -140,7 +140,77 @@ class Admin extends CI_Controller {
 		
 		$this->model_admin->hapus_surat_keluar($id);
 		redirect('admin/surat_keluar','refresh');
+	}	
+
+	/* Fungsi Manage User */
+	function manage_user(){
+		$a['data']	= $this->model_admin->tampil_user()->result_object();
+		$a['page']	= "manage_user";
+		
+		$this->load->view('admin/index', $a);
 	}
+
+	function tambah_user(){
+		$a['page']	= "tambah_user";
+		
+		$this->load->view('admin/index', $a);
+	}
+
+	function insert_user(){
+		
+		$user 	  = $this->input->post('user');
+		$password = $this->input->post('password');
+		$nama	  = $this->input->post('nama');
+
+		$object = array(
+				'username' => $user,
+				'password' => md5($password),
+				'nama' => $nama
+			);
+		$this->model_admin->insert_user($object);
+
+		redirect('admin/manage_user','refresh');
+	}
+
+	function edit_user($id){
+		$a['editdata']	= $this->model_admin->edit_user($id)->result_object();		
+		$a['page']	= "edit_user";
+		
+		$this->load->view('admin/index', $a);
+	}
+
+	function update_user(){
+		$id 	  = $this->input->post('id');
+		$user 	  = $this->input->post('user');
+		$password = $this->input->post('password');
+		$pass_old = $this->input->post('pass_old');
+		$nama	  = $this->input->post('nama');
+
+		if (empty($password)) {
+			$object = array(
+				'username' => $username,
+				'password' => $password,
+				'nama' => $nama
+			);
+		}else{
+			$object = array(
+				'username' => $username,
+				'password' => $pass_old,
+				'nama' => $nama
+			);
+		}
+
+		
+		$this->model_admin->update_user($id, $object);
+
+		redirect('admin/surat_keluar','refresh');
+	}
+
+	function hapus_user($id){
+		
+		$this->model_admin->hapus_user($id);
+		redirect('admin/manage_user','refresh');
+	}	
 
 
 }
