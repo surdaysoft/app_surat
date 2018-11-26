@@ -13,6 +13,11 @@ Cara menggunakan :
 <li>Ganti settingan database, dan sesuaikan dengan settingan punya kalian</li>
 </ul>
 
+<br/>
+Update :
+1. Fix error
+
+<br/><br/>
 Link Demo
 <br/>
 http://demo.surdaysoft.com/surat
