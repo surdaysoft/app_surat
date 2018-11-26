@@ -14,7 +14,10 @@ Cara menggunakan :
 </ul>
 
 <br/>
-Update :<br/>
+<b>Update :</b>
+<br/>
+20181126
+<br/>
 1. Fix error
 
 <br/><br/>
