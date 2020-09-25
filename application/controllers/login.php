@@ -38,8 +38,6 @@ class Login extends CI_Controller {
 			echo "maaf username atau password salah";
 		}
 		
-		
-		
 	}
 
 	public function logout()
